@@ -13,10 +13,8 @@ import AddStudio from "../components/app/info/studio/addStudio.vue"
 import StudioList from "../components/app/info/studio/studioList.vue"
 import AddTheater from "../components/app/info/theater/addTheater.vue"
 import TheaterList from "../components/app/info/theater/theaterList.vue"
-<<<<<<< HEAD
 import Img from "../components/app/info/img/img.vue"
-=======
->>>>>>> c22f0e8f7fb6977543a84f18009a7d1ff1e952c2
+
 Vue.use(Router)
 
 export default new Router({
@@ -73,14 +71,11 @@ export default new Router({
           path: "theaterList",
           component: TheaterList
         },
-<<<<<<< HEAD
+
         {
           path: "img/:movieId",
           component: Img
         },
-=======
-        
->>>>>>> c22f0e8f7fb6977543a84f18009a7d1ff1e952c2
     	]
     }
   ]

@@ -1,6 +1,6 @@
 <template>
 	<div>
-<<<<<<< HEAD
+
 		<el-form :model="form" :rules="rules" ref="form">
 		    <el-form-item label="中文名" :label-width="formLabelWidth" prop="cName">
 		      <el-input v-model="form.cName" class="width" auto-complete="off"></el-input>
@@ -141,17 +141,4 @@
 		width: 300px
 	}
 </style>
-=======
-		新增电影
-	</div>
-</template>
 
-<script>
-	export default {
-		name: "addMovie",
-		methods: {
-			
-		}
-	}
-</script>
->>>>>>> c22f0e8f7fb6977543a84f18009a7d1ff1e952c2

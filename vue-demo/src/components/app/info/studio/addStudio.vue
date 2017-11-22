@@ -1,12 +1,12 @@
 <template>
 	<el-form ref="form" label-width="80px" size="mini">
 	  <el-form-item label="影院名称">
-	  	<el-col :span="18">
+	  	<el-col :span="8">
 	    	<el-input v-model="sizeForm.name"></el-input>
 	    </el-col>
 	  </el-form-item>
 	  <el-form-item label="影院地址">
-	  	<el-col :span="18">
+	  	<el-col :span="8">
 	    	<el-input v-model="sizeForm.address"></el-input>
 	    </el-col>
 	  </el-form-item>

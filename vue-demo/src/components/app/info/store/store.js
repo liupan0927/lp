@@ -10,7 +10,8 @@ export default new Vuex.Store({
 	modules:{
 		movie,
 		img,
-		news，
+		news,
 		studioStore,
 		theaterStore
+	}
 })

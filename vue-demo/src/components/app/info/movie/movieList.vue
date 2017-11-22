@@ -17,7 +17,7 @@
 			</el-input>
 			<span style="margin-left:20px;color:deeppink" >电影状态：</span>
 			<el-input
-				style="width:260px"
+				style="width:280px"
 				class="findWidth"
 			    placeholder="0下映、1即将上映、2热映、3热播"
 			    prefix-icon="el-icon-search"
