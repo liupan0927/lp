@@ -36,8 +36,10 @@
 				          		<span>影院管理</span>
 				        	</template>
 					        <el-menu-item-group>
-					          	<el-menu-item index="/info/addTheater">新增影院</el-menu-item>
-					          	<el-menu-item index="/info/theaterList">影院列表</el-menu-item>
+
+					          	<el-menu-item index="/info/addStudio">新增影院</el-menu-item>
+					          	<el-menu-item index="/info/studioList">影院列表</el-menu-item>
+
 					        </el-menu-item-group>
 				      	</el-submenu>
 
@@ -61,6 +63,7 @@
 					          	<el-menu-item index="/info/movieNewsList">资讯列表</el-menu-item>
 					        </el-menu-item-group>
 				      </el-submenu>
+
 				      
 				    </el-menu>
 			    </el-aside>
@@ -150,9 +153,12 @@
 	    /*text-align: center;*/
 	    line-height: 200px;
 	}
+<<<<<<< HEAD
 	.el-aside>ul {
 	    height: 100%;
 	}
+=======
+>>>>>>> c22f0e8f7fb6977543a84f18009a7d1ff1e952c2
 	  
 	.el-main {
 	    /*background-color: #E9EEF3;

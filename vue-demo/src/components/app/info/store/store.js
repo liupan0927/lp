@@ -1,3 +1,5 @@
+import studioStore from "../studio/studioStore.js"
+import theaterStore from "../theater/theaterStore.js"
 import Vue from "vue";
 import Vuex from "vuex";
 import movie from '@/components/app/info/movie/movieStore';
@@ -8,6 +10,7 @@ export default new Vuex.Store({
 	modules:{
 		movie,
 		img,
-		news
-	}
+		news，
+		studioStore,
+		theaterStore
 })
