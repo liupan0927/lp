@@ -61,17 +61,6 @@
 					          	<el-menu-item index="/info/movieNewsList">资讯列表</el-menu-item>
 					        </el-menu-item-group>
 				      </el-submenu>
-				      <el-submenu index="4">
-					        <template slot="title">
-					          	<i class="el-icon-mobile-phone"></i>
-					          	<span>影厅管理</span>
-					        </template>
-					        <el-menu-item-group>
-					        	<el-menu-item index="/info/addTheater">新增影厅</el-menu-item>
-					          	<el-menu-item index="/info/theaterList">影厅列表</el-menu-item>
-					        </el-menu-item-group>
-				      </el-submenu>
-				      
 				    </el-menu>
 			    </el-aside>
 			    <el-container>
