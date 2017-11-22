@@ -103,12 +103,13 @@
 				console.log(row,"删除")
 				this.$store.dispatch("theaterStore/asyncRemoveTheater",{id:row._id})
 				this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:this.sizeForm.id})
+
 			},
 			handleSeat(index,row) {
 				console.log("查看座位")
 			},
 			handleEdit(index,row) {
-				console.log("修改")
+				console.log(row,"修改")
 			},
 		  	onSave() {
 		    	const theater = {
@@ -118,8 +119,8 @@
 		    		studioId:this.sizeForm.id
 		    	}
 		    	console.log(this.theaterList)
-		    	// this.$store.dispatch("theaterStore/asyncAddTheater",theater)
-		    	// this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:theater.studioId})
+		    	this.$store.dispatch("theaterStore/asyncAddTheater",theater)
+		    	this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:theater.studioId})
 		  	}
 		},
 		created() {

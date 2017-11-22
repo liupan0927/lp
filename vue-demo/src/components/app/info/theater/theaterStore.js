@@ -30,6 +30,10 @@ export default {
 		async asyncRemoveTheater(context,id) {
 			console.log(id)
 			let data = await axios.post("/theater/removeTheater",id)
+		},
+		async asyncRemoveTheater(context,id) {
+			console.log(id)
+			let data = await axios.post("/theater/updateTheater",id)
 		}
 	}
 }
