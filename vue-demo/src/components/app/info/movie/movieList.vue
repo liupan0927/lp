@@ -148,6 +148,17 @@
 					callback();
 				}
 			};
+			var checkGrade = (rule, value, callback) => {
+				if (this.form.state == 1) {
+					callback(new Error('不能为未上映电影评分'));
+				} 
+				if(value > 9.9) {
+					callback(new Error('评分不能超过9.9'));
+				}
+				else {
+					callback();
+				}
+			};
 			return {
 		        dialogFormVisible: false,
 		        form: {
@@ -162,6 +173,10 @@
 					country:[{
 						validator: checkCountry,
 						trigger: 'blur'
+					}],
+					grade:[{
+						validator: checkGrade,
+						trigger: 'change'
 					}],
 				},
 				title:"",

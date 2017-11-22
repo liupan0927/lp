@@ -146,18 +146,11 @@
 	    line-height: 60px;
 	}
 	  
-	.el-aside {
-	    background-color: #D3DCE6;
-	    color: #333;
-	    /*text-align: center;*/
-	    line-height: 200px;
-	}
-<<<<<<< HEAD
+
 	.el-aside>ul {
 	    height: 100%;
 	}
-=======
->>>>>>> c22f0e8f7fb6977543a84f18009a7d1ff1e952c2
+
 	  
 	.el-main {
 	    /*background-color: #E9EEF3;

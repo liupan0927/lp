@@ -15,12 +15,12 @@
 			@row-dblclick="doubleClick"
 		    :data="data1.newsData"
 		    border
-		    style="width: 1041px;">
+		    style="width: 1241px;">
 		    <el-table-column
 		      fixed
 		      prop="movieId.cName"
 		      label="电影名称"
-		      width="200">
+		      width="100">
 		    </el-table-column>
 		    <el-table-column
 		      prop="title"
@@ -36,7 +36,9 @@
 		      :formatter="formatContent"
 		      prop="imgs[0].imgComment"
 		      label="资讯内容"
-		      width="200">
+		      class="text"
+		      show-overflow-tooltip
+		      width="400">
 		    </el-table-column>
 		    <el-table-column
 		      prop="imgs[0].url"
@@ -380,6 +382,13 @@
 
 	.width{
 		width: 300px
+	}
+	.text>div{
+		// overflow: hidden;
+	 //    text-overflow: ellipsis;
+	 //    display: -webkit-box;
+	 //    -webkit-line-clamp: 4;//（行数）
+	 //    -webkit-box-orient: vertical;
 	}
 
 </style>

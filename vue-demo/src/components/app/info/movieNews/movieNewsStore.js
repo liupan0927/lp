@@ -5,7 +5,7 @@ export default {
 	namespaced: true,
 	state: {
 		curPage: 1,
-		eachPage: 10,
+		eachPage: 6,
 		maxPage: 0,
 		count: 0,
 		newsData: [],
