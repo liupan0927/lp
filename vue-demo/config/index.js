@@ -66,7 +66,7 @@ module.exports = {
         secure: false,
         changeOrigin: true
       },
-      "/theaters/**": {
+      "/theater/**": {
         target: "http://127.0.0.1:3000",
         secure: false,
         changeOrigin: true

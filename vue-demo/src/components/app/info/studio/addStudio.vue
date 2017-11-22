@@ -11,7 +11,7 @@
 	    </el-col>
 	  </el-form-item>
 	  <el-form-item size="large">
-	    <el-button type="primary" @click="onSubmit" id="change">立即创建</el-button>
+	    <el-button type="primary" @click="onSubmit" ref="change">立即创建</el-button>
 	    <el-button>取消</el-button>
 	  </el-form-item>
 	</el-form>
@@ -30,15 +30,29 @@
 		},
 		methods: {
 		  	onSubmit() {
-		    	const info = {name:this.sizeForm.name,address:this.sizeForm.address}
-		    	this.$store.dispatch("asyncAdd",info)
+		    	const info = {name:this.sizeForm.name,address:this.sizeForm.address,updateId:this.sizeForm.id}
+		    	this.$store.dispatch("studioStore/asyncAdd",info)
 		  	}
+
 		},
 		created() {
-			console.log(this.$route.query)
-			if(this.$route.query){
+			const params=this.$route.query
+			const change = document.getElementById("change")
+			if(this.$route.query.id){
+				this.sizeForm.name= params.name
+				this.sizeForm.address= params.address
+				this.sizeForm.id= params.id
+				console.log(change,"修改")
+			console.log(this.$refs.change)
+				
+			}
+			else{
 
 			}
+			
+		},
+		updated() {
+			console.log(this.$refs.change)
 		}
 	};
 </script>
