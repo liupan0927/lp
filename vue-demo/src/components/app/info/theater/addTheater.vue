@@ -51,9 +51,25 @@
 		        <el-button
 		          size="mini"
 		          @click="handleSeat(scope.$index, scope.row)">查看座位</el-button>
-		        <el-button
-		          size="mini"
-		          @click="handleEdit(scope.$index, scope.row)">修改</el-button>
+		        
+		        <el-button size="mini" @click="change(scope.$index, scope.row)" style="margin-right:10px">修改</el-button>
+		        <el-dialog title="修改影厅" :visible.sync="dialogFormVisible">
+				<el-form>
+				<el-form-item label="影厅名称" :label-width="formLabelWidth">
+				  <el-input v-model="sizeForm.theaterName" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="行数" :label-width="formLabelWidth">
+				  <el-input v-model="sizeForm.row" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="列数" :label-width="formLabelWidth">
+				  <el-input v-model="sizeForm.col" auto-complete="off"></el-input>
+				</el-form-item>
+				</el-form>
+				<div slot="footer" class="dialog-footer">
+				<el-button @click="dialogFormVisible = false">取 消</el-button>
+				<el-button type="primary" @click="handleEdit(scope.$index, scope.row)">确 定</el-button>
+				</div>
+				</el-dialog>
 		        <el-button
 		          size="mini"
 		          type="danger"
@@ -70,9 +86,27 @@
 	        :total="this.theaterList.total">
 	      </el-pagination>
 	    </div>
-  		
-
-	</div>
+			<el-table
+			:data="this.seatList.rows"
+			style="width: 100%">
+				<el-table-column
+				  label="座位"
+				  width="180">
+				  <template slot-scope="scope">
+				    <i class="el-icon-star-on"></i>
+				    <span style="margin-left: 10px">{{ scope.row.displayName }}</span>
+				  </template>
+				</el-table-column>
+				<el-table-column label="操作">
+				  <template slot-scope="scope">
+				    <el-button
+				      size="mini"
+				      type="danger"
+				      @click="seatDelete(scope.$index, scope.row)">删除</el-button>
+				  </template>
+				</el-table-column>
+			</el-table>	
+		</div>
 </template>
 
 <script>
@@ -88,29 +122,48 @@
 		      col: "9",
 		      data:[]
 		    },
+		    update:{
+		    	name: null,
+		    	id: null
+		    },
+		    theater: {},
+		    dialogTableVisible: false,
+        	dialogFormVisible: false,
+	        formLabelWidth: '120px'
 		  };
 		},
 		methods: {
 			// 分页 每页显示条数
 			handleSizeChange(val) {
-
 			},
 			// 分页 当前页
 			handleCurrentChange(val) {
 				this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{page:val,id:this.sizeForm.id})
 			},
+			// 影厅删除
 			handleDelete(index,row) {
 				console.log(row,"删除")
 				this.$store.dispatch("theaterStore/asyncRemoveTheater",{id:row._id})
 				this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:this.sizeForm.id})
-
 			},
-			handleSeat(index,row) {
-				console.log("查看座位")
+			// 进入修改
+			change(index,row){
+				console.log(row)
+				this.dialogFormVisible = true
+				this.update.id=row._id
 			},
+			// 修改操作执行
 			handleEdit(index,row) {
 				console.log(row,"修改")
+				this.update.name = this.sizeForm.theaterName
+				this.dialogFormVisible = false
+				const name=this.update.name
+				const id=this.update.id
+				console.log(id,name,"update")
+				this.$store.dispatch("theaterStore/asyncUpdateTheater",{id:id,name:name})
+				this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:this.sizeForm.id})
 			},
+			// 新增影厅
 		  	onSave() {
 		    	const theater = {
 		    		name:this.sizeForm.theaterName,
@@ -118,7 +171,6 @@
 		    		colNo:this.sizeForm.col,
 		    		studioId:this.sizeForm.id
 		    	}
-		    	console.log(this.theaterList)
 		    	this.$store.dispatch("theaterStore/asyncAddTheater",theater)
 		    	this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:theater.studioId})
 		  	}
@@ -132,7 +184,7 @@
 			this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:this.sizeForm.id})
 
 		},
-		computed:mapState('theaterStore',['theaterList'])
+		computed:mapState('theaterStore',['theaterList','seatList'])
 	};
 </script>
 // :data="data"
