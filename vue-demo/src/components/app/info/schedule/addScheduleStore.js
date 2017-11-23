@@ -74,7 +74,6 @@ export default {
 			context.commit("getStudios", data.rows)
 		},
 		async addSchedule(context,addInfo) {
-			// console.log(addInfo.value)
 			const {data} = await axios.post(`/schedule/addSchedule`, {		
 					movieId:addInfo.value,
 					studioId:addInfo.value1,
