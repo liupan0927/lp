@@ -56,7 +56,7 @@
 		        <el-dialog title="修改影厅" :visible.sync="dialogFormVisible">
 				<el-form>
 				<el-form-item label="影厅名称" :label-width="formLabelWidth">
-				  <el-input v-model="sizeForm.theaterName" auto-complete="off"></el-input>
+				  <el-input v-model="sizeForm.changeTheaterName" auto-complete="off"></el-input>
 				</el-form-item>
 				<el-form-item label="行数" :label-width="formLabelWidth">
 				  <el-input v-model="sizeForm.row" auto-complete="off"></el-input>
