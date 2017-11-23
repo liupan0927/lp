@@ -12,7 +12,7 @@
 	  </el-form-item>
 	  <el-form-item size="large">
 	    <el-button type="primary" @click="onSubmit" ref="change">立即创建</el-button>
-	    <el-button>取消</el-button>
+	    <el-button @click="cancel">取消</el-button>
 	  </el-form-item>
 	</el-form>
 </template>
@@ -29,9 +29,23 @@
 		  };
 		},
 		methods: {
+			open() {
+				this.$alert('请正确输入', '提示信息', {
+					confirmButtonText: '确定',
+				});
+			},
+			cancel() {
+				this.sizeForm.name= ""
+				this.sizeForm.address=""
+			},
 		  	onSubmit() {
 		    	const info = {name:this.sizeForm.name,address:this.sizeForm.address,updateId:this.sizeForm.id}
-		    	this.$store.dispatch("studioStore/asyncAdd",info)
+				if (this.sizeForm.name != "" && this.sizeForm.address != "") {
+					this.$store.dispatch("studioStore/asyncAdd", info)
+				}
+				else{
+					this.open()
+				}
 		  	}
 
 		},
