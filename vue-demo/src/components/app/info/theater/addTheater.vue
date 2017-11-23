@@ -86,7 +86,14 @@
 	        :total="this.theaterList.total">
 	      </el-pagination>
 	    </div>
-			
+			<el-dialog title="座位列表" :visible.sync="dialogTable" :dialogTable="dialogTable">
+				<el-table :data="this.seatList">
+				    <el-table-column property="rowNo" label="行号" ></el-table-column>
+				    <el-table-column property="colNo" label="列号" ></el-table-column>
+				    <el-table-column property="displayName" label="座位名称" ></el-table-column>
+					<el-table-column property="displayName" label="售票状态" ></el-table-column>
+				</el-table>
+			</el-dialog>
 		</div>
 </template>
 
@@ -107,7 +114,14 @@
 		    	name: null,
 		    	id: null
 		    },
+		    gridData: [{
+	          	date: '2016-05-02',
+	            name: '王小虎',
+	            address: '上海市普陀区金沙江路 1518 弄'
+	        }],
+	        theaterId: null,
 		    theater: {},
+		    dialogTable: false,
 		    dialogTableVisible: false,
         	dialogFormVisible: false,
 	        formLabelWidth: '120px'
@@ -127,6 +141,19 @@
 				this.$store.dispatch("theaterStore/asyncRemoveTheater",{id:row._id})
 				this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:this.sizeForm.id})
 			},
+			// 查看座位
+		  	handleSeat(index,row) {
+		  		this.dialogTable = true
+		  		const seat = {
+		  			rowNo: this.row,
+		    		colNo: this.col,
+		    		displayName: `${this.row} +"排"+ ${this.col}+"列"`,
+		    		theaterId: row._id
+
+		  		}
+		  		this.theaterId=row._id
+		  		this.$store.dispatch("theaterStore/getSeatsAsync",row._id)
+		  	},
 			// 进入修改
 			change(index,row){
 				console.log(row)
@@ -135,12 +162,10 @@
 			},
 			// 修改操作执行
 			handleEdit(index,row) {
-				console.log(row,"修改")
 				this.update.name = this.sizeForm.theaterName
 				this.dialogFormVisible = false
 				const name=this.update.name
 				const id=this.update.id
-				console.log(id,name,"update")
 				this.$store.dispatch("theaterStore/asyncUpdateTheater",{id:id,name:name})
 				this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:this.sizeForm.id})
 			},
@@ -153,7 +178,6 @@
 		    		studioId:this.sizeForm.id
 		    	}
 		    	this.theater=theater
-		    	console.log(this.theaterList)
 		    	this.$store.dispatch("theaterStore/asyncAddTheater",theater)
 		    	this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:theater.studioId})
 		  	}
@@ -170,5 +194,4 @@
 		computed:mapState('theaterStore',['theaterList','seatList'])
 	};
 </script>
-// :data="data"
 <style></style>

@@ -3,10 +3,14 @@ import axios from "axios"
 export default {
 	namespaced: true,
 	state: {
-		theaterList: []
+		theaterList: [],
+		seatList:[]
 	},
 	
 	mutations: {
+		getSeats(state,data) {
+			state.seatList=data.data.rows
+		},
 		getTheaters(state,data){
 			state.theaterList=data.data
 		}
@@ -15,7 +19,6 @@ export default {
 		// 新增影厅
 		async asyncAddTheater(context,theater) {
 			const data = await axios.post("/theater/addTheater",theater)
-			// console.log(data)
 		}, 
 		// 获取影厅列表
 		async asyncGetTheaterByPage(context,id) {
@@ -24,6 +27,18 @@ export default {
 				page: id.page
 			}})
 			context.commit("getTheaters",data)
+		},
+		// 查看座位
+		async getSeatsAsync(context,theaterId) {
+			const eachPage=999
+			const data = await axios.get("/seat/getSeatsByTheaterId",{
+				// // _id:id
+				params: {
+					theaterId,
+					rows:eachPage
+				}
+			})
+			context.commit("getSeats",data)
 		},
 		// 删除影厅
 		async asyncRemoveTheater(context,id) {
