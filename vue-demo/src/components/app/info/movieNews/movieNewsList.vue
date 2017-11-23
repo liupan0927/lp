@@ -17,7 +17,7 @@
 		    border
 		    style="width: 1241px;">
 		    <el-table-column
-		      fixed
+		      
 		      prop="movieId.cName"
 		      label="电影名称"
 		      width="100">
@@ -49,7 +49,7 @@
 		    </el-table-column>
 
 		    <el-table-column
-		      fixed="right"
+		     
 		      label="操作"
 		      width="200">
 		      <template slot-scope="scope">

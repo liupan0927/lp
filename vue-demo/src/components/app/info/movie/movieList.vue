@@ -32,7 +32,7 @@
 		    border
 		    style="width: 1041px;">
 		    <el-table-column
-		      fixed
+		      
 		      prop="cName"
 		      label="中文名"
 		      width="200">
@@ -60,7 +60,7 @@
 		    </el-table-column>
 
 		    <el-table-column
-		      fixed="right"
+		      
 		      label="操作"
 		      width="200">
 		      <template slot-scope="scope">
