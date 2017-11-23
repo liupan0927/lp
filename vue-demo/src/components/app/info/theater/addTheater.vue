@@ -86,26 +86,7 @@
 	        :total="this.theaterList.total">
 	      </el-pagination>
 	    </div>
-			<el-table
-			:data="this.seatList.rows"
-			style="width: 100%">
-				<el-table-column
-				  label="座位"
-				  width="180">
-				  <template slot-scope="scope">
-				    <i class="el-icon-star-on"></i>
-				    <span style="margin-left: 10px">{{ scope.row.displayName }}</span>
-				  </template>
-				</el-table-column>
-				<el-table-column label="操作">
-				  <template slot-scope="scope">
-				    <el-button
-				      size="mini"
-				      type="danger"
-				      @click="seatDelete(scope.$index, scope.row)">删除</el-button>
-				  </template>
-				</el-table-column>
-			</el-table>	
+			
 		</div>
 </template>
 
@@ -171,6 +152,8 @@
 		    		colNo:this.sizeForm.col,
 		    		studioId:this.sizeForm.id
 		    	}
+		    	this.theater=theater
+		    	console.log(this.theaterList)
 		    	this.$store.dispatch("theaterStore/asyncAddTheater",theater)
 		    	this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:theater.studioId})
 		  	}

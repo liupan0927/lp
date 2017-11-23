@@ -96,6 +96,7 @@
       },
       // 新增
       handleAdd(index, row) {
+        console.log("in")
         this.$router.push(`/info/addTheater?id=${row._id}&name=${row.name}`)
       }
     },
