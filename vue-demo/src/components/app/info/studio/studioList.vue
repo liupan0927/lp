@@ -5,7 +5,7 @@
       style="width: 100%">
       <el-table-column
         label="影院名称"
-        width="180">
+        width="280">
         <template slot-scope="scope">
           <i class="el-icon-more-outline"></i>
           <span style="margin-left: 10px">{{ scope.row.name }}</span>
@@ -14,7 +14,7 @@
       <el-table-column
         align="center"
         label="影院地址"
-        width="180">
+        width="320">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
             <p>名称: {{ scope.row.name }}</p>
@@ -46,7 +46,7 @@
         :page-size="10"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        layout="total, sizes, prev, pager, next, jumper"
+        layout="total, prev, pager, next, jumper"
         :total="this.$store.state.studioStore.studioList.total">
       </el-pagination>
     </div>

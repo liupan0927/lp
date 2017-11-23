@@ -20,7 +20,7 @@
 
 		    <el-form-item size="large">
 			    <el-button type="primary" @click="onSave" id="change">保存</el-button>
-			    <el-button>重置</el-button>
+			    <el-button @click="reset">重置</el-button>
 			</el-form-item>
 		</el-form>
 
@@ -57,12 +57,6 @@
 				<el-form>
 				<el-form-item label="影厅名称" :label-width="formLabelWidth">
 				  <el-input v-model="sizeForm.changeTheaterName" auto-complete="off"></el-input>
-				</el-form-item>
-				<el-form-item label="行数" :label-width="formLabelWidth">
-				  <el-input v-model="sizeForm.row" auto-complete="off"></el-input>
-				</el-form-item>
-				<el-form-item label="列数" :label-width="formLabelWidth">
-				  <el-input v-model="sizeForm.col" auto-complete="off"></el-input>
 				</el-form-item>
 				</el-form>
 				<div slot="footer" class="dialog-footer">
@@ -106,6 +100,7 @@
 		  return {
 		    sizeForm: {
 		      theaterName: "巨幕厅",
+		      changeTheaterName: "巨幕厅",
 		      row: "9",
 		      col: "9",
 		      data:[]
@@ -128,6 +123,17 @@
 		  };
 		},
 		methods: {
+			open() {
+				this.$alert('请正确输入', '提示信息', {
+					confirmButtonText: '确定',
+				});
+			},
+			// 重置
+			reset() {
+				this.sizeForm.theaterName=""
+				this.sizeForm.row=""
+				this.sizeForm.col=""
+			},
 			// 分页 每页显示条数
 			handleSizeChange(val) {
 			},
@@ -162,7 +168,7 @@
 			},
 			// 修改操作执行
 			handleEdit(index,row) {
-				this.update.name = this.sizeForm.theaterName
+				this.update.name = this.sizeForm.changeTheaterName
 				this.dialogFormVisible = false
 				const name=this.update.name
 				const id=this.update.id
@@ -178,8 +184,15 @@
 		    		studioId:this.sizeForm.id
 		    	}
 		    	this.theater=theater
-		    	this.$store.dispatch("theaterStore/asyncAddTheater",theater)
-		    	this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:theater.studioId})
+		    	console.log(theater.colNo,theater.rowNo,theater.name)
+				if (theater.colNo != "" && theater.rowNo != "" && theater.name != "") {
+					this.$store.dispatch("theaterStore/asyncAddTheater",theater)
+		    		this.$store.dispatch("theaterStore/asyncGetTheaterByPage",{id:theater.studioId})
+				}
+				else{
+					this.open()
+				}
+		    	
 		  	}
 		},
 		created() {
