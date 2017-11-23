@@ -1,8 +1,9 @@
 <template>
 	<div style="width:300px;
+		margin:auto;
 		margin-top:200px;
 		height:191px;
-		margin:auto;
+		
 		background-color: #e9e7ef;">
 		<div class="head" 
 			style="width:300px;

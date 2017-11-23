@@ -17,7 +17,7 @@
 				      	@close="handleClose"
 				      	background-color="#545c64"
 				      	text-color="#fff"
-				      	active-text-color="#ffd04b">
+				      	active-text-color="pink">
 
 				      	<el-submenu index="1">
 				        	<template slot="title">
@@ -68,7 +68,19 @@
 			    </el-aside>
 			    <el-container>
 				    <el-main>
-						<router-view></router-view>
+				    	<div ref="welcome" style="margin:auto;width:300px;margin-top:220px">
+				    		<div style="width: 300px;text-align:center"><i class="el-icon-news" style="font-size:46px;font-weight:700;color:darksalmon;"></i>
+				    		</div>
+			    			<div style="width: 320px;text-align:center;margin-top:20px">
+				    			<span style="font-size:40px;font-weight:700;color:darksalmon;">
+				    			欢迎来到猫眼电影后台管理系统！
+				    			</span>
+				    		</div>
+				    	</div>
+				    	<div ref="list" style="display:none;">
+				    		<router-view></router-view>
+				    	</div>
+						
 				    </el-main>
 				    <el-footer>
 				    	建议使用360浏览器、谷歌浏览器
@@ -86,11 +98,22 @@
 		name: "info",
 		data() {
 			return {
-				arr:["1","2","3","4"]
+				arr:["1","2","3","4"],
+				
 			}
+		},
+		created() {
+			
+			this.handleOpen();
+		},
+		updated() {
+			console.log(this.$refs.welcome)
+			this.$refs.welcome.style.display = "none";
+			this.$refs.list.style.display = "block";
 		},
 		methods: {//ctrl+alt+f
 			handleOpen(key, keyPath) {
+				console.log(this.$refs.div)
 				console.log(key, keyPath);
 			},
 			handleClose(key, keyPath) {
@@ -118,7 +141,7 @@
 								done();
 								setTimeout(() => {
 									instance.confirmButtonLoading = false;
-									this.$router.push("/login");
+									this.$router.push("/");
 								}, 300);
 							}, 3000);
 						} else {
