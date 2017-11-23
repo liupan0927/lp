@@ -2,7 +2,7 @@
     <div>  
       <el-table
       :data="this.$store.state.studioStore.studioList.rows"
-      style="width: 100%">
+      style="width: 1241px">
       <el-table-column
         label="影院名称"
         width="280">

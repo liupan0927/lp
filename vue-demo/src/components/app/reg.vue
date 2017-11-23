@@ -1,5 +1,6 @@
 <template>
 	<div style="width:300px;
+		margin-top:200px;
 		height:191px;
 		margin:auto;
 		background-color: #e9e7ef;">
