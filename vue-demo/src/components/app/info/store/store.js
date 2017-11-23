@@ -5,6 +5,7 @@ import Vuex from "vuex";
 import movie from '@/components/app/info/movie/movieStore';
 import img from '@/components/app/info/img/imgStore';
 import news from '@/components/app/info/movieNews/movieNewsStore';
+import addScheduleStore from "../schedule/addScheduleStore.js"
 Vue.use(Vuex);
 export default new Vuex.Store({
 	modules:{
@@ -12,6 +13,7 @@ export default new Vuex.Store({
 		img,
 		news,
 		studioStore,
-		theaterStore
+		theaterStore,
+		addScheduleStore
 	}
 })

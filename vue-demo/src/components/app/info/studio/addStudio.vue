@@ -64,9 +64,6 @@
 
 			}
 			
-		},
-		updated() {
-			console.log(this.$refs.change)
 		}
 	};
 </script>
