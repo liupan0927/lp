@@ -46,6 +46,9 @@
 				typeName:"主页图片"
 			}
 		},
+		updated() {
+
+		},
 		created() {
 			this.$store.state.img.fileList = [];
 			this.getImgInfoByMovieIdAndType(this.$route.params.movieId,1);
@@ -53,6 +56,8 @@
 		},
 		methods:{
 			getImgInfoByMovieIdAndType(id,type) {
+				//JSON.stringify(img)
+
 				this.$store.dispatch("img/getImgInfoByMovieIdAndType", {
 					id,
 					type
@@ -94,6 +99,7 @@
 		    },
 			beforeUpload(file) {
 				this.upLoadData.name = file.name;
+
 			},
 			
 		},
