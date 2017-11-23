@@ -149,7 +149,7 @@
 				}
 			};
 			var checkGrade = (rule, value, callback) => {
-				if (this.form.state == 1) {
+				if (this.form.state == 1 && value > 0) {
 					callback(new Error('不能为未上映电影评分'));
 				} 
 				if(value > 9.9) {
